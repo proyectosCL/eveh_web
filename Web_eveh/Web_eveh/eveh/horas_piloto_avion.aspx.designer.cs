@@ -7,18 +7,27 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace Web_eveh {
+namespace Web_eveh.eveh {
     
     
-    public partial class SiteMaster {
+    public partial class horas_piloto_avion {
         
         /// <summary>
-        /// Control MainContent.
+        /// Control GridView1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder MainContent;
+        protected global::System.Web.UI.WebControls.GridView GridView1;
+        
+        /// <summary>
+        /// Control piloto_avion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource piloto_avion;
     }
 }
