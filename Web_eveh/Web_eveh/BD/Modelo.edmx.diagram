@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="af790602bf3e4eec95ce80a15eab5aaf" Name="Diagram1">
+        <EntityTypeShape EntityType="Modelo.AERODROMOS" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Modelo.AERONAVES" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Modelo.COMPONENTES" Width="1.5" PointX="5.25" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="Modelo.DETALLES_MANTENIMIENTOS" Width="1.5" PointX="11.5" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Modelo.LICENCIAS" Width="1.5" PointX="10.5" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Modelo.MANTENIMIENTOS" Width="1.5" PointX="11.5" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Modelo.PERFILES_USUARIOS" Width="1.5" PointX="1.5" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Modelo.PERSONAS" Width="1.5" PointX="6" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Modelo.PILOTOS" Width="1.5" PointX="8.25" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Modelo.PLANES" Width="1.5" PointX="13.75" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Modelo.TIPOS_AERONAVES" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Modelo.TIPOS_COMPONENTES" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Modelo.TIPOS_LICENCIAS" Width="1.5" PointX="8.25" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Modelo.TRIPULACION" Width="1.5" PointX="8.875" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Modelo.USUARIOS" Width="1.5" PointX="3.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Modelo.VUELOS" Width="1.5" PointX="8.25" PointY="4" IsExpanded="true" />
+        <AssociationConnector Association="Modelo.VUELOS_AERODROMOS_DESTINO_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Modelo.VUELOS_AERODROMOS_ORIGEN_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Modelo.AERONAVES_TIPO_AERONAVES_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Modelo.COMPONENTES_AERONAVES_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Modelo.VUELOS_AERONAVES_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Modelo.COMPONENTES_COMPONENTES_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Modelo.COMPONENTES_T_COMPONENTES_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Modelo.DETALLES_M_COMPONENTES_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Modelo.DETALLES_M_MANTENIMIENTOS_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Modelo.LICENCIAS_PILOTOS_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Modelo.LICENCIAS_TIPOS_LICENCIAS_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Modelo.USUARIOS_PERFILES_USUARIOS_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Modelo.PERSONAS_USUARIOS_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Modelo.PILOTOS_PERSONAS_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Modelo.TRIPULACION_PILOTOS_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Modelo.TRIPULACION_VUELOS_FK" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

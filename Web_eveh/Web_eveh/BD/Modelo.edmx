@@ -1,0 +1,1113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Modelo.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AERODROMOS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar2" MaxLength="80" Nullable="false" />
+          <Property Name="CIUDAD" Type="varchar2" MaxLength="40" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AERONAVES">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="MATRICULA" Type="varchar2" MaxLength="5" Nullable="false" />
+          <Property Name="TIPO_AERONAVES_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ESTADO" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="FECHA_AERONAVEGABILIDAD" Type="date" Nullable="false" />
+          <Property Name="FECHA_INSPECCION_ANUAL" Type="date" Nullable="false" />
+          <Property Name="HORAS_VUELO" Type="float" Precision="126" Scale="0" Nullable="false" />
+          <Property Name="DIAS_VUELO" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="COMPONENTES">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar2" MaxLength="40" Nullable="false" />
+          <Property Name="FABRICANTE" Type="varchar2" MaxLength="25" Nullable="false" />
+          <Property Name="HORAS_VUELO" Type="float" Precision="126" Scale="0" Nullable="false" />
+          <Property Name="DIAS_VUELO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="TIPOS_COMPONENTES_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="COMPONENTES_ID" Type="number" Precision="38" Scale="0" />
+          <Property Name="AERONAVES_ID" Type="number" Precision="38" Scale="0" />
+        </EntityType>
+        <EntityType Name="DETALLES_MANTENIMIENTOS">
+          <Key>
+            <PropertyRef Name="MANTENIMIENTOS_ID" />
+            <PropertyRef Name="COMPONENTES_ID" />
+          </Key>
+          <Property Name="MANTENIMIENTOS_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="COMPONENTES_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="PLANES_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ESTADO" Type="varchar2" MaxLength="140" Nullable="false" />
+          <Property Name="TAREAS_SELECCIONADAS" Type="varchar2" MaxLength="80" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LICENCIAS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NUMERO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="TIPOS_LICENCIAS_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FECHA_VENCIMIENTO" Type="date" Nullable="false" />
+          <Property Name="HORAS_VUELO" Type="float" Precision="126" Scale="0" Nullable="false" />
+          <Property Name="DIAS_VUELO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="PILOTOS_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MANTENIMIENTOS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FECHA_INICIO" Type="date" Nullable="false" />
+          <Property Name="FECHA_TERMINO" Type="date" />
+        </EntityType>
+        <EntityType Name="PERFILES_USUARIOS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar2" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PERSONAS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="RUT" Type="varchar2" MaxLength="12" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar2" MaxLength="20" Nullable="false" />
+          <Property Name="APELLIDOS" Type="varchar2" MaxLength="25" Nullable="false" />
+          <Property Name="SEXO" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="FECHA_NACIMIENTO" Type="date" Nullable="false" />
+          <Property Name="TELEFONO" Type="varchar2" MaxLength="25" />
+          <Property Name="CORREO" Type="varchar2" MaxLength="25" />
+          <Property Name="NACIONALIDAD" Type="varchar2" MaxLength="25" />
+          <Property Name="USUARIOS_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PILOTOS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="HORAS_VUELO" Type="float" Precision="126" Scale="0" Nullable="false" />
+          <Property Name="DIAS_VUELO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="VENCIMIENTO_MEDICINA" Type="date" />
+          <Property Name="ULTIMO_VUELO_REALIZADO" Type="date" />
+          <Property Name="PERSONAS_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PLANES">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar2" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TIPOS_AERONAVES">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar2" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TIPOS_COMPONENTES">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar2" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TIPOS_LICENCIAS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar2" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TRIPULACION">
+          <Key>
+            <PropertyRef Name="VUELOS_ID" />
+            <PropertyRef Name="PILOTOS_ID" />
+          </Key>
+          <Property Name="VUELOS_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="PILOTOS_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="TIPO" Type="char" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="USUARIOS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="CUENTA" Type="varchar2" MaxLength="20" Nullable="false" />
+          <Property Name="PASS" Type="varchar2" MaxLength="32" Nullable="false" />
+          <Property Name="PERFILES_USUARIOS_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ESTADO_CUENTA" Type="varchar2" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="VUELOS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="AERODROMOS_ID_ORIGEN" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="AERODROMOS_ID_DESTINO" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="HORAS_VUELO" Type="float" Precision="126" Scale="0" />
+          <Property Name="CONDICION_VUELO" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="MISION_VUELO" Type="varchar2" MaxLength="140" Nullable="false" />
+          <Property Name="FECHA_VUELO" Type="date" Nullable="false" />
+          <Property Name="AERONAVES_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ESTADO_VUELO" Type="varchar2" MaxLength="20" />
+        </EntityType>
+        <Association Name="AERONAVES_TIPO_AERONAVES_FK">
+          <End Role="TIPOS_AERONAVES" Type="Self.TIPOS_AERONAVES" Multiplicity="1" />
+          <End Role="AERONAVES" Type="Self.AERONAVES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPOS_AERONAVES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AERONAVES">
+              <PropertyRef Name="TIPO_AERONAVES_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="COMPONENTES_AERONAVES_FK">
+          <End Role="AERONAVES" Type="Self.AERONAVES" Multiplicity="0..1" />
+          <End Role="COMPONENTES" Type="Self.COMPONENTES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AERONAVES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="COMPONENTES">
+              <PropertyRef Name="AERONAVES_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="COMPONENTES_COMPONENTES_FK">
+          <End Role="COMPONENTES" Type="Self.COMPONENTES" Multiplicity="0..1" />
+          <End Role="COMPONENTES1" Type="Self.COMPONENTES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COMPONENTES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="COMPONENTES1">
+              <PropertyRef Name="COMPONENTES_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="COMPONENTES_T_COMPONENTES_FK">
+          <End Role="TIPOS_COMPONENTES" Type="Self.TIPOS_COMPONENTES" Multiplicity="1" />
+          <End Role="COMPONENTES" Type="Self.COMPONENTES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPOS_COMPONENTES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="COMPONENTES">
+              <PropertyRef Name="TIPOS_COMPONENTES_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DETALLES_M_COMPONENTES_FK">
+          <End Role="COMPONENTES" Type="Self.COMPONENTES" Multiplicity="1" />
+          <End Role="DETALLES_MANTENIMIENTOS" Type="Self.DETALLES_MANTENIMIENTOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COMPONENTES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DETALLES_MANTENIMIENTOS">
+              <PropertyRef Name="COMPONENTES_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DETALLES_M_MANTENIMIENTOS_FK">
+          <End Role="MANTENIMIENTOS" Type="Self.MANTENIMIENTOS" Multiplicity="1" />
+          <End Role="DETALLES_MANTENIMIENTOS" Type="Self.DETALLES_MANTENIMIENTOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MANTENIMIENTOS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DETALLES_MANTENIMIENTOS">
+              <PropertyRef Name="MANTENIMIENTOS_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="LICENCIAS_PILOTOS_FK">
+          <End Role="PILOTOS" Type="Self.PILOTOS" Multiplicity="1" />
+          <End Role="LICENCIAS" Type="Self.LICENCIAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PILOTOS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LICENCIAS">
+              <PropertyRef Name="PILOTOS_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="LICENCIAS_TIPOS_LICENCIAS_FK">
+          <End Role="TIPOS_LICENCIAS" Type="Self.TIPOS_LICENCIAS" Multiplicity="1" />
+          <End Role="LICENCIAS" Type="Self.LICENCIAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPOS_LICENCIAS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LICENCIAS">
+              <PropertyRef Name="TIPOS_LICENCIAS_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PERSONAS_USUARIOS_FK">
+          <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="1" />
+          <End Role="PERSONAS" Type="Self.PERSONAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIOS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PERSONAS">
+              <PropertyRef Name="USUARIOS_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PILOTOS_PERSONAS_FK">
+          <End Role="PERSONAS" Type="Self.PERSONAS" Multiplicity="1" />
+          <End Role="PILOTOS" Type="Self.PILOTOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PERSONAS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PILOTOS">
+              <PropertyRef Name="PERSONAS_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TRIPULACION_PILOTOS_FK">
+          <End Role="PILOTOS" Type="Self.PILOTOS" Multiplicity="1" />
+          <End Role="TRIPULACION" Type="Self.TRIPULACION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PILOTOS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TRIPULACION">
+              <PropertyRef Name="PILOTOS_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TRIPULACION_VUELOS_FK">
+          <End Role="VUELOS" Type="Self.VUELOS" Multiplicity="1" />
+          <End Role="TRIPULACION" Type="Self.TRIPULACION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VUELOS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TRIPULACION">
+              <PropertyRef Name="VUELOS_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="USUARIOS_PERFILES_USUARIOS_FK">
+          <End Role="PERFILES_USUARIOS" Type="Self.PERFILES_USUARIOS" Multiplicity="1" />
+          <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PERFILES_USUARIOS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="USUARIOS">
+              <PropertyRef Name="PERFILES_USUARIOS_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="VUELOS_AERODROMOS_DESTINO_FK">
+          <End Role="AERODROMOS" Type="Self.AERODROMOS" Multiplicity="1" />
+          <End Role="VUELOS" Type="Self.VUELOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AERODROMOS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VUELOS">
+              <PropertyRef Name="AERODROMOS_ID_DESTINO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="VUELOS_AERODROMOS_ORIGEN_FK">
+          <End Role="AERODROMOS" Type="Self.AERODROMOS" Multiplicity="1" />
+          <End Role="VUELOS" Type="Self.VUELOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AERODROMOS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VUELOS">
+              <PropertyRef Name="AERODROMOS_ID_ORIGEN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="VUELOS_AERONAVES_FK">
+          <End Role="AERONAVES" Type="Self.AERONAVES" Multiplicity="1" />
+          <End Role="VUELOS" Type="Self.VUELOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AERONAVES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VUELOS">
+              <PropertyRef Name="AERONAVES_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModeloStoreContainer">
+          <EntitySet Name="AERODROMOS" EntityType="Self.AERODROMOS" Schema="ESCUELA" store:Type="Tables" />
+          <EntitySet Name="AERONAVES" EntityType="Self.AERONAVES" Schema="ESCUELA" store:Type="Tables" />
+          <EntitySet Name="COMPONENTES" EntityType="Self.COMPONENTES" Schema="ESCUELA" store:Type="Tables" />
+          <EntitySet Name="DETALLES_MANTENIMIENTOS" EntityType="Self.DETALLES_MANTENIMIENTOS" Schema="ESCUELA" store:Type="Tables" />
+          <EntitySet Name="LICENCIAS" EntityType="Self.LICENCIAS" Schema="ESCUELA" store:Type="Tables" />
+          <EntitySet Name="MANTENIMIENTOS" EntityType="Self.MANTENIMIENTOS" Schema="ESCUELA" store:Type="Tables" />
+          <EntitySet Name="PERFILES_USUARIOS" EntityType="Self.PERFILES_USUARIOS" Schema="ESCUELA" store:Type="Tables" />
+          <EntitySet Name="PERSONAS" EntityType="Self.PERSONAS" Schema="ESCUELA" store:Type="Tables" />
+          <EntitySet Name="PILOTOS" EntityType="Self.PILOTOS" Schema="ESCUELA" store:Type="Tables" />
+          <EntitySet Name="PLANES" EntityType="Self.PLANES" Schema="ESCUELA" store:Type="Tables" />
+          <EntitySet Name="TIPOS_AERONAVES" EntityType="Self.TIPOS_AERONAVES" Schema="ESCUELA" store:Type="Tables" />
+          <EntitySet Name="TIPOS_COMPONENTES" EntityType="Self.TIPOS_COMPONENTES" Schema="ESCUELA" store:Type="Tables" />
+          <EntitySet Name="TIPOS_LICENCIAS" EntityType="Self.TIPOS_LICENCIAS" Schema="ESCUELA" store:Type="Tables" />
+          <EntitySet Name="TRIPULACION" EntityType="Self.TRIPULACION" Schema="ESCUELA" store:Type="Tables" />
+          <EntitySet Name="USUARIOS" EntityType="Self.USUARIOS" Schema="ESCUELA" store:Type="Tables" />
+          <EntitySet Name="VUELOS" EntityType="Self.VUELOS" Schema="ESCUELA" store:Type="Tables" />
+          <AssociationSet Name="AERONAVES_TIPO_AERONAVES_FK" Association="Self.AERONAVES_TIPO_AERONAVES_FK">
+            <End Role="TIPOS_AERONAVES" EntitySet="TIPOS_AERONAVES" />
+            <End Role="AERONAVES" EntitySet="AERONAVES" />
+          </AssociationSet>
+          <AssociationSet Name="COMPONENTES_AERONAVES_FK" Association="Self.COMPONENTES_AERONAVES_FK">
+            <End Role="AERONAVES" EntitySet="AERONAVES" />
+            <End Role="COMPONENTES" EntitySet="COMPONENTES" />
+          </AssociationSet>
+          <AssociationSet Name="COMPONENTES_COMPONENTES_FK" Association="Self.COMPONENTES_COMPONENTES_FK">
+            <End Role="COMPONENTES" EntitySet="COMPONENTES" />
+            <End Role="COMPONENTES1" EntitySet="COMPONENTES" />
+          </AssociationSet>
+          <AssociationSet Name="COMPONENTES_T_COMPONENTES_FK" Association="Self.COMPONENTES_T_COMPONENTES_FK">
+            <End Role="TIPOS_COMPONENTES" EntitySet="TIPOS_COMPONENTES" />
+            <End Role="COMPONENTES" EntitySet="COMPONENTES" />
+          </AssociationSet>
+          <AssociationSet Name="DETALLES_M_COMPONENTES_FK" Association="Self.DETALLES_M_COMPONENTES_FK">
+            <End Role="COMPONENTES" EntitySet="COMPONENTES" />
+            <End Role="DETALLES_MANTENIMIENTOS" EntitySet="DETALLES_MANTENIMIENTOS" />
+          </AssociationSet>
+          <AssociationSet Name="DETALLES_M_MANTENIMIENTOS_FK" Association="Self.DETALLES_M_MANTENIMIENTOS_FK">
+            <End Role="MANTENIMIENTOS" EntitySet="MANTENIMIENTOS" />
+            <End Role="DETALLES_MANTENIMIENTOS" EntitySet="DETALLES_MANTENIMIENTOS" />
+          </AssociationSet>
+          <AssociationSet Name="LICENCIAS_PILOTOS_FK" Association="Self.LICENCIAS_PILOTOS_FK">
+            <End Role="PILOTOS" EntitySet="PILOTOS" />
+            <End Role="LICENCIAS" EntitySet="LICENCIAS" />
+          </AssociationSet>
+          <AssociationSet Name="LICENCIAS_TIPOS_LICENCIAS_FK" Association="Self.LICENCIAS_TIPOS_LICENCIAS_FK">
+            <End Role="TIPOS_LICENCIAS" EntitySet="TIPOS_LICENCIAS" />
+            <End Role="LICENCIAS" EntitySet="LICENCIAS" />
+          </AssociationSet>
+          <AssociationSet Name="PERSONAS_USUARIOS_FK" Association="Self.PERSONAS_USUARIOS_FK">
+            <End Role="USUARIOS" EntitySet="USUARIOS" />
+            <End Role="PERSONAS" EntitySet="PERSONAS" />
+          </AssociationSet>
+          <AssociationSet Name="PILOTOS_PERSONAS_FK" Association="Self.PILOTOS_PERSONAS_FK">
+            <End Role="PERSONAS" EntitySet="PERSONAS" />
+            <End Role="PILOTOS" EntitySet="PILOTOS" />
+          </AssociationSet>
+          <AssociationSet Name="TRIPULACION_PILOTOS_FK" Association="Self.TRIPULACION_PILOTOS_FK">
+            <End Role="PILOTOS" EntitySet="PILOTOS" />
+            <End Role="TRIPULACION" EntitySet="TRIPULACION" />
+          </AssociationSet>
+          <AssociationSet Name="TRIPULACION_VUELOS_FK" Association="Self.TRIPULACION_VUELOS_FK">
+            <End Role="VUELOS" EntitySet="VUELOS" />
+            <End Role="TRIPULACION" EntitySet="TRIPULACION" />
+          </AssociationSet>
+          <AssociationSet Name="USUARIOS_PERFILES_USUARIOS_FK" Association="Self.USUARIOS_PERFILES_USUARIOS_FK">
+            <End Role="PERFILES_USUARIOS" EntitySet="PERFILES_USUARIOS" />
+            <End Role="USUARIOS" EntitySet="USUARIOS" />
+          </AssociationSet>
+          <AssociationSet Name="VUELOS_AERODROMOS_DESTINO_FK" Association="Self.VUELOS_AERODROMOS_DESTINO_FK">
+            <End Role="AERODROMOS" EntitySet="AERODROMOS" />
+            <End Role="VUELOS" EntitySet="VUELOS" />
+          </AssociationSet>
+          <AssociationSet Name="VUELOS_AERODROMOS_ORIGEN_FK" Association="Self.VUELOS_AERODROMOS_ORIGEN_FK">
+            <End Role="AERODROMOS" EntitySet="AERODROMOS" />
+            <End Role="VUELOS" EntitySet="VUELOS" />
+          </AssociationSet>
+          <AssociationSet Name="VUELOS_AERONAVES_FK" Association="Self.VUELOS_AERONAVES_FK">
+            <End Role="AERONAVES" EntitySet="AERONAVES" />
+            <End Role="VUELOS" EntitySet="VUELOS" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Modelo" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AERODROMOS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CIUDAD" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="VUELOS" Relationship="Self.VUELOS_AERODROMOS_DESTINO_FK" FromRole="AERODROMOS" ToRole="VUELOS" />
+          <NavigationProperty Name="VUELOS1" Relationship="Self.VUELOS_AERODROMOS_ORIGEN_FK" FromRole="AERODROMOS" ToRole="VUELOS" />
+        </EntityType>
+        <EntityType Name="AERONAVES">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="MATRICULA" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TIPO_AERONAVES_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ESTADO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="FECHA_AERONAVEGABILIDAD" Type="DateTime" Nullable="false" />
+          <Property Name="FECHA_INSPECCION_ANUAL" Type="DateTime" Nullable="false" />
+          <Property Name="HORAS_VUELO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DIAS_VUELO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="TIPOS_AERONAVES" Relationship="Self.AERONAVES_TIPO_AERONAVES_FK" FromRole="AERONAVES" ToRole="TIPOS_AERONAVES" />
+          <NavigationProperty Name="COMPONENTES" Relationship="Self.COMPONENTES_AERONAVES_FK" FromRole="AERONAVES" ToRole="COMPONENTES" />
+          <NavigationProperty Name="VUELOS" Relationship="Self.VUELOS_AERONAVES_FK" FromRole="AERONAVES" ToRole="VUELOS" />
+        </EntityType>
+        <EntityType Name="COMPONENTES">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FABRICANTE" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="HORAS_VUELO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DIAS_VUELO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="TIPOS_COMPONENTES_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="COMPONENTES_ID" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="AERONAVES_ID" Type="Decimal" Precision="38" Scale="0" />
+          <NavigationProperty Name="AERONAVES" Relationship="Self.COMPONENTES_AERONAVES_FK" FromRole="COMPONENTES" ToRole="AERONAVES" />
+          <NavigationProperty Name="COMPONENTES1" Relationship="Self.COMPONENTES_COMPONENTES_FK" FromRole="COMPONENTES" ToRole="COMPONENTES1" />
+          <NavigationProperty Name="COMPONENTES2" Relationship="Self.COMPONENTES_COMPONENTES_FK" FromRole="COMPONENTES1" ToRole="COMPONENTES" />
+          <NavigationProperty Name="TIPOS_COMPONENTES" Relationship="Self.COMPONENTES_T_COMPONENTES_FK" FromRole="COMPONENTES" ToRole="TIPOS_COMPONENTES" />
+          <NavigationProperty Name="DETALLES_MANTENIMIENTOS" Relationship="Self.DETALLES_M_COMPONENTES_FK" FromRole="COMPONENTES" ToRole="DETALLES_MANTENIMIENTOS" />
+        </EntityType>
+        <EntityType Name="DETALLES_MANTENIMIENTOS">
+          <Key>
+            <PropertyRef Name="MANTENIMIENTOS_ID" />
+            <PropertyRef Name="COMPONENTES_ID" />
+          </Key>
+          <Property Name="MANTENIMIENTOS_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="COMPONENTES_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="PLANES_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ESTADO" Type="String" MaxLength="140" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TAREAS_SELECCIONADAS" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="COMPONENTES" Relationship="Self.DETALLES_M_COMPONENTES_FK" FromRole="DETALLES_MANTENIMIENTOS" ToRole="COMPONENTES" />
+          <NavigationProperty Name="MANTENIMIENTOS" Relationship="Self.DETALLES_M_MANTENIMIENTOS_FK" FromRole="DETALLES_MANTENIMIENTOS" ToRole="MANTENIMIENTOS" />
+        </EntityType>
+        <EntityType Name="LICENCIAS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NUMERO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="TIPOS_LICENCIAS_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FECHA_VENCIMIENTO" Type="DateTime" Nullable="false" />
+          <Property Name="HORAS_VUELO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DIAS_VUELO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="PILOTOS_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="PILOTOS" Relationship="Self.LICENCIAS_PILOTOS_FK" FromRole="LICENCIAS" ToRole="PILOTOS" />
+          <NavigationProperty Name="TIPOS_LICENCIAS" Relationship="Self.LICENCIAS_TIPOS_LICENCIAS_FK" FromRole="LICENCIAS" ToRole="TIPOS_LICENCIAS" />
+        </EntityType>
+        <EntityType Name="MANTENIMIENTOS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FECHA_INICIO" Type="DateTime" Nullable="false" />
+          <Property Name="FECHA_TERMINO" Type="DateTime" />
+          <NavigationProperty Name="DETALLES_MANTENIMIENTOS" Relationship="Self.DETALLES_M_MANTENIMIENTOS_FK" FromRole="MANTENIMIENTOS" ToRole="DETALLES_MANTENIMIENTOS" />
+        </EntityType>
+        <EntityType Name="PERFILES_USUARIOS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="USUARIOS" Relationship="Self.USUARIOS_PERFILES_USUARIOS_FK" FromRole="PERFILES_USUARIOS" ToRole="USUARIOS" />
+        </EntityType>
+        <EntityType Name="PERSONAS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="RUT" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="APELLIDOS" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SEXO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="FECHA_NACIMIENTO" Type="DateTime" Nullable="false" />
+          <Property Name="TELEFONO" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="CORREO" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="NACIONALIDAD" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="USUARIOS_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="USUARIOS" Relationship="Self.PERSONAS_USUARIOS_FK" FromRole="PERSONAS" ToRole="USUARIOS" />
+          <NavigationProperty Name="PILOTOS" Relationship="Self.PILOTOS_PERSONAS_FK" FromRole="PERSONAS" ToRole="PILOTOS" />
+        </EntityType>
+        <EntityType Name="PILOTOS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="HORAS_VUELO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DIAS_VUELO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="VENCIMIENTO_MEDICINA" Type="DateTime" />
+          <Property Name="ULTIMO_VUELO_REALIZADO" Type="DateTime" />
+          <Property Name="PERSONAS_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <NavigationProperty Name="LICENCIAS" Relationship="Self.LICENCIAS_PILOTOS_FK" FromRole="PILOTOS" ToRole="LICENCIAS" />
+          <NavigationProperty Name="PERSONAS" Relationship="Self.PILOTOS_PERSONAS_FK" FromRole="PILOTOS" ToRole="PERSONAS" />
+          <NavigationProperty Name="TRIPULACION" Relationship="Self.TRIPULACION_PILOTOS_FK" FromRole="PILOTOS" ToRole="TRIPULACION" />
+        </EntityType>
+        <EntityType Name="PLANES">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TIPOS_AERONAVES">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="AERONAVES" Relationship="Self.AERONAVES_TIPO_AERONAVES_FK" FromRole="TIPOS_AERONAVES" ToRole="AERONAVES" />
+        </EntityType>
+        <EntityType Name="TIPOS_COMPONENTES">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="COMPONENTES" Relationship="Self.COMPONENTES_T_COMPONENTES_FK" FromRole="TIPOS_COMPONENTES" ToRole="COMPONENTES" />
+        </EntityType>
+        <EntityType Name="TIPOS_LICENCIAS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="LICENCIAS" Relationship="Self.LICENCIAS_TIPOS_LICENCIAS_FK" FromRole="TIPOS_LICENCIAS" ToRole="LICENCIAS" />
+        </EntityType>
+        <EntityType Name="TRIPULACION">
+          <Key>
+            <PropertyRef Name="VUELOS_ID" />
+            <PropertyRef Name="PILOTOS_ID" />
+          </Key>
+          <Property Name="VUELOS_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="PILOTOS_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="TIPO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="PILOTOS" Relationship="Self.TRIPULACION_PILOTOS_FK" FromRole="TRIPULACION" ToRole="PILOTOS" />
+          <NavigationProperty Name="VUELOS" Relationship="Self.TRIPULACION_VUELOS_FK" FromRole="TRIPULACION" ToRole="VUELOS" />
+        </EntityType>
+        <EntityType Name="USUARIOS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="CUENTA" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PASS" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PERFILES_USUARIOS_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ESTADO_CUENTA" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PERFILES_USUARIOS" Relationship="Self.USUARIOS_PERFILES_USUARIOS_FK" FromRole="USUARIOS" ToRole="PERFILES_USUARIOS" />
+          <NavigationProperty Name="PERSONAS" Relationship="Self.PERSONAS_USUARIOS_FK" FromRole="USUARIOS" ToRole="PERSONAS" />
+        </EntityType>
+        <EntityType Name="VUELOS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="AERODROMOS_ID_ORIGEN" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="AERODROMOS_ID_DESTINO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="HORAS_VUELO" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="CONDICION_VUELO" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="MISION_VUELO" Type="String" MaxLength="140" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FECHA_VUELO" Type="DateTime" Nullable="false" />
+          <Property Name="AERONAVES_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ESTADO_VUELO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="AERODROMOS" Relationship="Self.VUELOS_AERODROMOS_DESTINO_FK" FromRole="VUELOS" ToRole="AERODROMOS" />
+          <NavigationProperty Name="AERODROMOS1" Relationship="Self.VUELOS_AERODROMOS_ORIGEN_FK" FromRole="VUELOS" ToRole="AERODROMOS" />
+          <NavigationProperty Name="AERONAVES" Relationship="Self.VUELOS_AERONAVES_FK" FromRole="VUELOS" ToRole="AERONAVES" />
+          <NavigationProperty Name="TRIPULACION" Relationship="Self.TRIPULACION_VUELOS_FK" FromRole="VUELOS" ToRole="TRIPULACION" />
+        </EntityType>
+        <Association Name="VUELOS_AERODROMOS_DESTINO_FK">
+          <End Role="AERODROMOS" Type="Self.AERODROMOS" Multiplicity="1" />
+          <End Role="VUELOS" Type="Self.VUELOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AERODROMOS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VUELOS">
+              <PropertyRef Name="AERODROMOS_ID_DESTINO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="VUELOS_AERODROMOS_ORIGEN_FK">
+          <End Role="AERODROMOS" Type="Self.AERODROMOS" Multiplicity="1" />
+          <End Role="VUELOS" Type="Self.VUELOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AERODROMOS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VUELOS">
+              <PropertyRef Name="AERODROMOS_ID_ORIGEN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AERONAVES_TIPO_AERONAVES_FK">
+          <End Role="TIPOS_AERONAVES" Type="Self.TIPOS_AERONAVES" Multiplicity="1" />
+          <End Role="AERONAVES" Type="Self.AERONAVES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPOS_AERONAVES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AERONAVES">
+              <PropertyRef Name="TIPO_AERONAVES_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="COMPONENTES_AERONAVES_FK">
+          <End Role="AERONAVES" Type="Self.AERONAVES" Multiplicity="0..1" />
+          <End Role="COMPONENTES" Type="Self.COMPONENTES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AERONAVES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="COMPONENTES">
+              <PropertyRef Name="AERONAVES_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="VUELOS_AERONAVES_FK">
+          <End Role="AERONAVES" Type="Self.AERONAVES" Multiplicity="1" />
+          <End Role="VUELOS" Type="Self.VUELOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AERONAVES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VUELOS">
+              <PropertyRef Name="AERONAVES_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="COMPONENTES_COMPONENTES_FK">
+          <End Role="COMPONENTES" Type="Self.COMPONENTES" Multiplicity="0..1" />
+          <End Role="COMPONENTES1" Type="Self.COMPONENTES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COMPONENTES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="COMPONENTES1">
+              <PropertyRef Name="COMPONENTES_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="COMPONENTES_T_COMPONENTES_FK">
+          <End Role="TIPOS_COMPONENTES" Type="Self.TIPOS_COMPONENTES" Multiplicity="1" />
+          <End Role="COMPONENTES" Type="Self.COMPONENTES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPOS_COMPONENTES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="COMPONENTES">
+              <PropertyRef Name="TIPOS_COMPONENTES_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DETALLES_M_COMPONENTES_FK">
+          <End Role="COMPONENTES" Type="Self.COMPONENTES" Multiplicity="1" />
+          <End Role="DETALLES_MANTENIMIENTOS" Type="Self.DETALLES_MANTENIMIENTOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COMPONENTES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DETALLES_MANTENIMIENTOS">
+              <PropertyRef Name="COMPONENTES_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DETALLES_M_MANTENIMIENTOS_FK">
+          <End Role="MANTENIMIENTOS" Type="Self.MANTENIMIENTOS" Multiplicity="1" />
+          <End Role="DETALLES_MANTENIMIENTOS" Type="Self.DETALLES_MANTENIMIENTOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MANTENIMIENTOS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DETALLES_MANTENIMIENTOS">
+              <PropertyRef Name="MANTENIMIENTOS_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="LICENCIAS_PILOTOS_FK">
+          <End Role="PILOTOS" Type="Self.PILOTOS" Multiplicity="1" />
+          <End Role="LICENCIAS" Type="Self.LICENCIAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PILOTOS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LICENCIAS">
+              <PropertyRef Name="PILOTOS_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="LICENCIAS_TIPOS_LICENCIAS_FK">
+          <End Role="TIPOS_LICENCIAS" Type="Self.TIPOS_LICENCIAS" Multiplicity="1" />
+          <End Role="LICENCIAS" Type="Self.LICENCIAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPOS_LICENCIAS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="LICENCIAS">
+              <PropertyRef Name="TIPOS_LICENCIAS_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="USUARIOS_PERFILES_USUARIOS_FK">
+          <End Role="PERFILES_USUARIOS" Type="Self.PERFILES_USUARIOS" Multiplicity="1" />
+          <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PERFILES_USUARIOS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="USUARIOS">
+              <PropertyRef Name="PERFILES_USUARIOS_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PERSONAS_USUARIOS_FK">
+          <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="1" />
+          <End Role="PERSONAS" Type="Self.PERSONAS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIOS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PERSONAS">
+              <PropertyRef Name="USUARIOS_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PILOTOS_PERSONAS_FK">
+          <End Role="PERSONAS" Type="Self.PERSONAS" Multiplicity="1" />
+          <End Role="PILOTOS" Type="Self.PILOTOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PERSONAS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PILOTOS">
+              <PropertyRef Name="PERSONAS_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TRIPULACION_PILOTOS_FK">
+          <End Role="PILOTOS" Type="Self.PILOTOS" Multiplicity="1" />
+          <End Role="TRIPULACION" Type="Self.TRIPULACION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PILOTOS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TRIPULACION">
+              <PropertyRef Name="PILOTOS_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TRIPULACION_VUELOS_FK">
+          <End Role="VUELOS" Type="Self.VUELOS" Multiplicity="1" />
+          <End Role="TRIPULACION" Type="Self.TRIPULACION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VUELOS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TRIPULACION">
+              <PropertyRef Name="VUELOS_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AERODROMOS" EntityType="Self.AERODROMOS" />
+          <EntitySet Name="AERONAVES" EntityType="Self.AERONAVES" />
+          <EntitySet Name="COMPONENTES" EntityType="Self.COMPONENTES" />
+          <EntitySet Name="DETALLES_MANTENIMIENTOS" EntityType="Self.DETALLES_MANTENIMIENTOS" />
+          <EntitySet Name="LICENCIAS" EntityType="Self.LICENCIAS" />
+          <EntitySet Name="MANTENIMIENTOS" EntityType="Self.MANTENIMIENTOS" />
+          <EntitySet Name="PERFILES_USUARIOS" EntityType="Self.PERFILES_USUARIOS" />
+          <EntitySet Name="PERSONAS" EntityType="Self.PERSONAS" />
+          <EntitySet Name="PILOTOS" EntityType="Self.PILOTOS" />
+          <EntitySet Name="PLANES" EntityType="Self.PLANES" />
+          <EntitySet Name="TIPOS_AERONAVES" EntityType="Self.TIPOS_AERONAVES" />
+          <EntitySet Name="TIPOS_COMPONENTES" EntityType="Self.TIPOS_COMPONENTES" />
+          <EntitySet Name="TIPOS_LICENCIAS" EntityType="Self.TIPOS_LICENCIAS" />
+          <EntitySet Name="TRIPULACION" EntityType="Self.TRIPULACION" />
+          <EntitySet Name="USUARIOS" EntityType="Self.USUARIOS" />
+          <EntitySet Name="VUELOS" EntityType="Self.VUELOS" />
+          <AssociationSet Name="VUELOS_AERODROMOS_DESTINO_FK" Association="Self.VUELOS_AERODROMOS_DESTINO_FK">
+            <End Role="AERODROMOS" EntitySet="AERODROMOS" />
+            <End Role="VUELOS" EntitySet="VUELOS" />
+          </AssociationSet>
+          <AssociationSet Name="VUELOS_AERODROMOS_ORIGEN_FK" Association="Self.VUELOS_AERODROMOS_ORIGEN_FK">
+            <End Role="AERODROMOS" EntitySet="AERODROMOS" />
+            <End Role="VUELOS" EntitySet="VUELOS" />
+          </AssociationSet>
+          <AssociationSet Name="AERONAVES_TIPO_AERONAVES_FK" Association="Self.AERONAVES_TIPO_AERONAVES_FK">
+            <End Role="TIPOS_AERONAVES" EntitySet="TIPOS_AERONAVES" />
+            <End Role="AERONAVES" EntitySet="AERONAVES" />
+          </AssociationSet>
+          <AssociationSet Name="COMPONENTES_AERONAVES_FK" Association="Self.COMPONENTES_AERONAVES_FK">
+            <End Role="AERONAVES" EntitySet="AERONAVES" />
+            <End Role="COMPONENTES" EntitySet="COMPONENTES" />
+          </AssociationSet>
+          <AssociationSet Name="VUELOS_AERONAVES_FK" Association="Self.VUELOS_AERONAVES_FK">
+            <End Role="AERONAVES" EntitySet="AERONAVES" />
+            <End Role="VUELOS" EntitySet="VUELOS" />
+          </AssociationSet>
+          <AssociationSet Name="COMPONENTES_COMPONENTES_FK" Association="Self.COMPONENTES_COMPONENTES_FK">
+            <End Role="COMPONENTES" EntitySet="COMPONENTES" />
+            <End Role="COMPONENTES1" EntitySet="COMPONENTES" />
+          </AssociationSet>
+          <AssociationSet Name="COMPONENTES_T_COMPONENTES_FK" Association="Self.COMPONENTES_T_COMPONENTES_FK">
+            <End Role="TIPOS_COMPONENTES" EntitySet="TIPOS_COMPONENTES" />
+            <End Role="COMPONENTES" EntitySet="COMPONENTES" />
+          </AssociationSet>
+          <AssociationSet Name="DETALLES_M_COMPONENTES_FK" Association="Self.DETALLES_M_COMPONENTES_FK">
+            <End Role="COMPONENTES" EntitySet="COMPONENTES" />
+            <End Role="DETALLES_MANTENIMIENTOS" EntitySet="DETALLES_MANTENIMIENTOS" />
+          </AssociationSet>
+          <AssociationSet Name="DETALLES_M_MANTENIMIENTOS_FK" Association="Self.DETALLES_M_MANTENIMIENTOS_FK">
+            <End Role="MANTENIMIENTOS" EntitySet="MANTENIMIENTOS" />
+            <End Role="DETALLES_MANTENIMIENTOS" EntitySet="DETALLES_MANTENIMIENTOS" />
+          </AssociationSet>
+          <AssociationSet Name="LICENCIAS_PILOTOS_FK" Association="Self.LICENCIAS_PILOTOS_FK">
+            <End Role="PILOTOS" EntitySet="PILOTOS" />
+            <End Role="LICENCIAS" EntitySet="LICENCIAS" />
+          </AssociationSet>
+          <AssociationSet Name="LICENCIAS_TIPOS_LICENCIAS_FK" Association="Self.LICENCIAS_TIPOS_LICENCIAS_FK">
+            <End Role="TIPOS_LICENCIAS" EntitySet="TIPOS_LICENCIAS" />
+            <End Role="LICENCIAS" EntitySet="LICENCIAS" />
+          </AssociationSet>
+          <AssociationSet Name="USUARIOS_PERFILES_USUARIOS_FK" Association="Self.USUARIOS_PERFILES_USUARIOS_FK">
+            <End Role="PERFILES_USUARIOS" EntitySet="PERFILES_USUARIOS" />
+            <End Role="USUARIOS" EntitySet="USUARIOS" />
+          </AssociationSet>
+          <AssociationSet Name="PERSONAS_USUARIOS_FK" Association="Self.PERSONAS_USUARIOS_FK">
+            <End Role="USUARIOS" EntitySet="USUARIOS" />
+            <End Role="PERSONAS" EntitySet="PERSONAS" />
+          </AssociationSet>
+          <AssociationSet Name="PILOTOS_PERSONAS_FK" Association="Self.PILOTOS_PERSONAS_FK">
+            <End Role="PERSONAS" EntitySet="PERSONAS" />
+            <End Role="PILOTOS" EntitySet="PILOTOS" />
+          </AssociationSet>
+          <AssociationSet Name="TRIPULACION_PILOTOS_FK" Association="Self.TRIPULACION_PILOTOS_FK">
+            <End Role="PILOTOS" EntitySet="PILOTOS" />
+            <End Role="TRIPULACION" EntitySet="TRIPULACION" />
+          </AssociationSet>
+          <AssociationSet Name="TRIPULACION_VUELOS_FK" Association="Self.TRIPULACION_VUELOS_FK">
+            <End Role="VUELOS" EntitySet="VUELOS" />
+            <End Role="TRIPULACION" EntitySet="TRIPULACION" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModeloStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="AERODROMOS">
+            <EntityTypeMapping TypeName="Modelo.AERODROMOS">
+              <MappingFragment StoreEntitySet="AERODROMOS">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="CIUDAD" ColumnName="CIUDAD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AERONAVES">
+            <EntityTypeMapping TypeName="Modelo.AERONAVES">
+              <MappingFragment StoreEntitySet="AERONAVES">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MATRICULA" ColumnName="MATRICULA" />
+                <ScalarProperty Name="TIPO_AERONAVES_ID" ColumnName="TIPO_AERONAVES_ID" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="FECHA_AERONAVEGABILIDAD" ColumnName="FECHA_AERONAVEGABILIDAD" />
+                <ScalarProperty Name="FECHA_INSPECCION_ANUAL" ColumnName="FECHA_INSPECCION_ANUAL" />
+                <ScalarProperty Name="HORAS_VUELO" ColumnName="HORAS_VUELO" />
+                <ScalarProperty Name="DIAS_VUELO" ColumnName="DIAS_VUELO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COMPONENTES">
+            <EntityTypeMapping TypeName="Modelo.COMPONENTES">
+              <MappingFragment StoreEntitySet="COMPONENTES">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="FABRICANTE" ColumnName="FABRICANTE" />
+                <ScalarProperty Name="HORAS_VUELO" ColumnName="HORAS_VUELO" />
+                <ScalarProperty Name="DIAS_VUELO" ColumnName="DIAS_VUELO" />
+                <ScalarProperty Name="TIPOS_COMPONENTES_ID" ColumnName="TIPOS_COMPONENTES_ID" />
+                <ScalarProperty Name="COMPONENTES_ID" ColumnName="COMPONENTES_ID" />
+                <ScalarProperty Name="AERONAVES_ID" ColumnName="AERONAVES_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DETALLES_MANTENIMIENTOS">
+            <EntityTypeMapping TypeName="Modelo.DETALLES_MANTENIMIENTOS">
+              <MappingFragment StoreEntitySet="DETALLES_MANTENIMIENTOS">
+                <ScalarProperty Name="MANTENIMIENTOS_ID" ColumnName="MANTENIMIENTOS_ID" />
+                <ScalarProperty Name="COMPONENTES_ID" ColumnName="COMPONENTES_ID" />
+                <ScalarProperty Name="PLANES_ID" ColumnName="PLANES_ID" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="TAREAS_SELECCIONADAS" ColumnName="TAREAS_SELECCIONADAS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LICENCIAS">
+            <EntityTypeMapping TypeName="Modelo.LICENCIAS">
+              <MappingFragment StoreEntitySet="LICENCIAS">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NUMERO" ColumnName="NUMERO" />
+                <ScalarProperty Name="TIPOS_LICENCIAS_ID" ColumnName="TIPOS_LICENCIAS_ID" />
+                <ScalarProperty Name="FECHA_VENCIMIENTO" ColumnName="FECHA_VENCIMIENTO" />
+                <ScalarProperty Name="HORAS_VUELO" ColumnName="HORAS_VUELO" />
+                <ScalarProperty Name="DIAS_VUELO" ColumnName="DIAS_VUELO" />
+                <ScalarProperty Name="PILOTOS_ID" ColumnName="PILOTOS_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MANTENIMIENTOS">
+            <EntityTypeMapping TypeName="Modelo.MANTENIMIENTOS">
+              <MappingFragment StoreEntitySet="MANTENIMIENTOS">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FECHA_INICIO" ColumnName="FECHA_INICIO" />
+                <ScalarProperty Name="FECHA_TERMINO" ColumnName="FECHA_TERMINO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PERFILES_USUARIOS">
+            <EntityTypeMapping TypeName="Modelo.PERFILES_USUARIOS">
+              <MappingFragment StoreEntitySet="PERFILES_USUARIOS">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PERSONAS">
+            <EntityTypeMapping TypeName="Modelo.PERSONAS">
+              <MappingFragment StoreEntitySet="PERSONAS">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="RUT" ColumnName="RUT" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="APELLIDOS" ColumnName="APELLIDOS" />
+                <ScalarProperty Name="SEXO" ColumnName="SEXO" />
+                <ScalarProperty Name="FECHA_NACIMIENTO" ColumnName="FECHA_NACIMIENTO" />
+                <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+                <ScalarProperty Name="CORREO" ColumnName="CORREO" />
+                <ScalarProperty Name="NACIONALIDAD" ColumnName="NACIONALIDAD" />
+                <ScalarProperty Name="USUARIOS_ID" ColumnName="USUARIOS_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PILOTOS">
+            <EntityTypeMapping TypeName="Modelo.PILOTOS">
+              <MappingFragment StoreEntitySet="PILOTOS">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="HORAS_VUELO" ColumnName="HORAS_VUELO" />
+                <ScalarProperty Name="DIAS_VUELO" ColumnName="DIAS_VUELO" />
+                <ScalarProperty Name="VENCIMIENTO_MEDICINA" ColumnName="VENCIMIENTO_MEDICINA" />
+                <ScalarProperty Name="ULTIMO_VUELO_REALIZADO" ColumnName="ULTIMO_VUELO_REALIZADO" />
+                <ScalarProperty Name="PERSONAS_ID" ColumnName="PERSONAS_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PLANES">
+            <EntityTypeMapping TypeName="Modelo.PLANES">
+              <MappingFragment StoreEntitySet="PLANES">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TIPOS_AERONAVES">
+            <EntityTypeMapping TypeName="Modelo.TIPOS_AERONAVES">
+              <MappingFragment StoreEntitySet="TIPOS_AERONAVES">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TIPOS_COMPONENTES">
+            <EntityTypeMapping TypeName="Modelo.TIPOS_COMPONENTES">
+              <MappingFragment StoreEntitySet="TIPOS_COMPONENTES">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TIPOS_LICENCIAS">
+            <EntityTypeMapping TypeName="Modelo.TIPOS_LICENCIAS">
+              <MappingFragment StoreEntitySet="TIPOS_LICENCIAS">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TRIPULACION">
+            <EntityTypeMapping TypeName="Modelo.TRIPULACION">
+              <MappingFragment StoreEntitySet="TRIPULACION">
+                <ScalarProperty Name="VUELOS_ID" ColumnName="VUELOS_ID" />
+                <ScalarProperty Name="PILOTOS_ID" ColumnName="PILOTOS_ID" />
+                <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USUARIOS">
+            <EntityTypeMapping TypeName="Modelo.USUARIOS">
+              <MappingFragment StoreEntitySet="USUARIOS">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CUENTA" ColumnName="CUENTA" />
+                <ScalarProperty Name="PASS" ColumnName="PASS" />
+                <ScalarProperty Name="PERFILES_USUARIOS_ID" ColumnName="PERFILES_USUARIOS_ID" />
+                <ScalarProperty Name="ESTADO_CUENTA" ColumnName="ESTADO_CUENTA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VUELOS">
+            <EntityTypeMapping TypeName="Modelo.VUELOS">
+              <MappingFragment StoreEntitySet="VUELOS">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="AERODROMOS_ID_ORIGEN" ColumnName="AERODROMOS_ID_ORIGEN" />
+                <ScalarProperty Name="AERODROMOS_ID_DESTINO" ColumnName="AERODROMOS_ID_DESTINO" />
+                <ScalarProperty Name="HORAS_VUELO" ColumnName="HORAS_VUELO" />
+                <ScalarProperty Name="CONDICION_VUELO" ColumnName="CONDICION_VUELO" />
+                <ScalarProperty Name="MISION_VUELO" ColumnName="MISION_VUELO" />
+                <ScalarProperty Name="FECHA_VUELO" ColumnName="FECHA_VUELO" />
+                <ScalarProperty Name="AERONAVES_ID" ColumnName="AERONAVES_ID" />
+                <ScalarProperty Name="ESTADO_VUELO" ColumnName="ESTADO_VUELO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
