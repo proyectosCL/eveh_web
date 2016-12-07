@@ -10,33 +10,33 @@
 namespace Web_eveh {
     
     
-    public partial class inicio {
+    public partial class maste_inicio {
         
         /// <summary>
-        /// Control txtUsuario.
+        /// Control lblusuario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtUsuario;
+        protected global::System.Web.UI.WebControls.Label lblusuario;
         
         /// <summary>
-        /// Control txtConstraseña.
+        /// Control lbllink.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtConstraseña;
+        protected global::System.Web.UI.WebControls.HyperLink lbllink;
         
         /// <summary>
-        /// Control btnIngresar.
+        /// Control MainContent.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnIngresar;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder MainContent;
     }
 }

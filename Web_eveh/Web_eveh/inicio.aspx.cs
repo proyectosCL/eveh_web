@@ -50,7 +50,7 @@ namespace Web_eveh
                     usu = Consultas.autentificarUsuario(user,pas);
                     if (usu==null)
                     {
-                        Label1.Text = "no enttro";
+                       
                         Response.Write("<script LANGUAGE='JavaScript' >alert('No se Pudo iniciar sesión, intente nuevamente')</script>");
 
 

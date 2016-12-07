@@ -22,9 +22,9 @@ namespace Web_eveh.BD
 
                 USUARIOS usu = new USUARIOS();
                 //crear piloto con contraseña conocida para ingresar
-               // Buscar.CommandText = "SELECT * FROM usuarios where pass like '" + contrasena + "' and cuenta like '" + usuario + "' and PERFILES_USUARIOS_ID > 2 and ESTADO_CUENTA ='activado'";
+               Buscar.CommandText = "SELECT * FROM usuarios where pass like '" + contrasena + "' and cuenta like '" + usuario + "' and PERFILES_USUARIOS_ID > 2 and ESTADO_CUENTA ='activado'";
 
-                Buscar.CommandText = "SELECT * FROM usuarios where cuenta like '" + usuario + "' and PERFILES_USUARIOS_ID > 2 and ESTADO_CUENTA ='activado'";
+                //Buscar.CommandText = "SELECT * FROM usuarios where cuenta like '" + usuario + "' and PERFILES_USUARIOS_ID > 2 and ESTADO_CUENTA ='activado'";
 
 
                 OracleDataReader LEER = Buscar.ExecuteReader();

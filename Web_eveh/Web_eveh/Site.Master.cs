@@ -11,6 +11,15 @@ namespace Web_eveh
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["session_usuario"] == null)
+            {
+                Response.Redirect("~/inicio.aspx");
+            }
+            else
+            {
+                lblusuario.Text = Session["session_usuario"]+"";
+                lbllink.Visible = true;
+            }
 
         }
     }

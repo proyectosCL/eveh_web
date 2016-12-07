@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace Web_eveh
 {
-    public partial class Contact : Page
+    public partial class maste_inicio : System.Web.UI.MasterPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
