@@ -8,7 +8,7 @@ namespace Web_eveh.BD
 {
     public class Consultas
     {
-        public static void autentificarEnfermera(string usuario, string contrasena)
+        public static USUARIOS autentificarUsuario(string usuario, string contrasena)
         {
             try
             {
@@ -20,30 +20,35 @@ namespace Web_eveh.BD
 
                 Buscar.Connection = Cliente.Bdconexion;
 
-                PILOTOS piloto = new PILOTOS();
+                USUARIOS usu = new USUARIOS();
+                //crear piloto con contraseña conocida para ingresar
+               // Buscar.CommandText = "SELECT * FROM usuarios where pass like '" + contrasena + "' and cuenta like '" + usuario + "' and PERFILES_USUARIOS_ID > 2 and ESTADO_CUENTA ='activado'";
 
-                Buscar.CommandText = "SELECT * FROM HR.enfermeras_agendamiento where contrasena like '" + contrasena + "' and usuario like '" + usuario + "'";
+                Buscar.CommandText = "SELECT * FROM usuarios where cuenta like '" + usuario + "' and PERFILES_USUARIOS_ID > 2 and ESTADO_CUENTA ='activado'";
+
+
                 OracleDataReader LEER = Buscar.ExecuteReader();
 
                 if (LEER.HasRows)
                 {
 
-
-
+                    
                     LEER.Read();
-                    //Enfermera_agendamiento.Nom_usuario = LEER["NOM_USUARIO"] + "";
-                    //Enfermera_agendamiento.Usuario = LEER["USUARIO"] + "";
-                    //Enfermera_agendamiento.Contrasena = LEER["CONTRASENA"] + "";
-                    //Enfermera_agendamiento.Usuario_admin = LEER["USUARIO_ADMIN"] + "";
+                    usu.CUENTA = LEER["CUENTA"]+"";
+                    usu.PASS = LEER["PASS"]+"";
+                    usu.ID = Decimal.Parse( LEER["ID"]+"");
+                    
+                    
 
                     Cliente.Bdconexion.Close();
 
-
+                    return usu;
                 }
                 else
                 {
-                    Cliente.Bdconexion.Close();
 
+                    Cliente.Bdconexion.Close();
+                    return null;
 
                 }
             }
@@ -57,55 +62,7 @@ namespace Web_eveh.BD
 
         }
 
-
-
-        public static void autentificarAdministrador(string usu, string contra)
-        {
-            try
-            {
-                Cliente.RutaConexion();
-                Cliente.Bdconexion.Open();
-
-                OracleCommand Buscar = new OracleCommand();
-
-
-                Buscar.Connection = Cliente.Bdconexion;
-
-
-
-                Buscar.CommandText = "SELECT * FROM ADMINISTRADORES where CONTRASENA_ADMIN like '" + contra + "' and USUARIO_ADMIN like '" + usu + "'";
-                OracleDataReader LEER = Buscar.ExecuteReader();
-
-                if (LEER.HasRows)
-                {
-
-
-
-                    LEER.Read();
-                    //Administrador.NombreAdministrador = LEER["NOMBRE_ADMIN"] + "";
-                    //Administrador.Usuario_administrador = LEER["USUARIO_ADMIN"] + "";
-                    //Administrador.ContraAdmin = LEER["CONTRASENA_ADMIN"] + "";
-
-                    Cliente.Bdconexion.Close();
-
-
-                }
-                else
-                {
-                    Cliente.Bdconexion.Close();
-
-
-                }
-            }
-            catch (Exception)
-            {
-                Cliente.Bdconexion.Close();
-
-                throw new System.ArgumentException("Ha ocurrido un Problema en la conexion con la Base de Datos");
-            }
-
-
-        }
+        
 
 
 
@@ -171,92 +128,7 @@ namespace Web_eveh.BD
 
 
 
-        //public static bool agregarCirugia(Cirugia newcirugia)
-        //{
-        //    Pabellon pabe = new Pabellon();
-
-
-
-
-        //    // OracleConnection conne = new OracleConnection();
-
-        //    // Conexion n = new Conexion();
-        //    Conexion.abrirConexion();
-
-
-
-        //    try
-        //    {
-
-
-        //        String sql = "";
-
-        //        OracleCommand query;
-        //        //conne = new OracleConnection("Data Source=" + "diego" + "; User Id=" + "hr" + "; Password=" + "hr" + ";");
-        //        //conne.Open();
-
-        //        sql = "INSERT INTO CIRUGIAS VALUES(";
-        //        sql = sql + "'" + newcirugia.Num_cirugia + "','" + newcirugia.Descrip_cir + "','" + newcirugia.Tipo_ciru + "','" + newcirugia.Inter_quir + "','" + newcirugia.Estado_cir + "','" + newcirugia.Estado_desc + "',to_date('" + newcirugia.Fecha.ToShortDateString() + "','DD/MM/YYYY'),'" + Enfermera_agendamiento.Usuario + "'," + newcirugia.Cod_pab + ",'" + newcirugia.Rut + "','" + newcirugia.Hora + "') ";
-
-
-        //        query = new OracleCommand(sql, Conexion.conn);
-        //        query.ExecuteNonQuery();
-        //        Conexion.cerrarConexion();
-        //        return true;
-
-
-        //    }
-        //    catch (Exception)
-        //    {
-
-
-        //        Conexion.cerrarConexion();
-        //        return false;
-        //    }
-        //}
-
-
-
-        //public static bool agregarEnfermera_agendamiento()
-        //{
-
-
-        //    //OracleConnection conne = new OracleConnection();
-
-        //    //Conexion n = new Conexion();
-
-
-
-        //    try
-        //    {
-
-
-        //        String sql = "";
-
-        //        OracleCommand query;
-        //        //conne = new OracleConnection("Data Source=" + "diego" + "; User Id=" + "hr" + "; Password=" + "hr" + ";");
-        //        //conne.Open();
-        //        Conexion.abrirConexion();
-        //        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! NO RECONOCE LOS ATRIBUTOS DE ENFERMERA!!!!!!!!!!!!!!!!!!!!!
-        //        sql = "INSERT INTO Enfermeras_agendamiento VALUES(";
-
-        //        sql = sql + "'" + Enfermera_agendamiento.Usuario + "','" + Enfermera_agendamiento.Contrasena + "','" + Enfermera_agendamiento.Nom_usuario + "','" + Enfermera_agendamiento.Usuario_admin + "') ";
-
-        //        query = new OracleCommand(sql, Conexion.conn);
-        //        query.ExecuteNonQuery();
-        //        Conexion.cerrarConexion();
-        //        return true;
-
-
-        //    }
-        //    catch (Exception)
-        //    {
-
-
-        //        Conexion.cerrarConexion();
-        //        return false;
-        //    }
-        //}
+        
 
 
 
