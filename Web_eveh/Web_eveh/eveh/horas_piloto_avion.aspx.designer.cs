@@ -13,21 +13,21 @@ namespace Web_eveh.eveh {
     public partial class horas_piloto_avion {
         
         /// <summary>
-        /// Control GridView1.
+        /// Control lblHoras.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
+        protected global::System.Web.UI.WebControls.Label lblHoras;
         
         /// <summary>
-        /// Control piloto_avion.
+        /// Control HyperLink1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource piloto_avion;
+        protected global::System.Web.UI.WebControls.HyperLink HyperLink1;
     }
 }

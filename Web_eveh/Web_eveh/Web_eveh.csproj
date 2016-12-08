@@ -158,7 +158,6 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="eveh\Horas_piloto_avion.aspx" />
-    <Content Include="eveh\Horas_piloto_helicoptero.aspx" />
     <Content Include="eveh\Piloto_inicio.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -307,13 +306,6 @@
     </Compile>
     <Compile Include="eveh\Horas_piloto_avion.aspx.designer.cs">
       <DependentUpon>Horas_piloto_avion.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="eveh\Horas_piloto_helicoptero.aspx.cs">
-      <DependentUpon>Horas_piloto_helicoptero.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="eveh\Horas_piloto_helicoptero.aspx.designer.cs">
-      <DependentUpon>Horas_piloto_helicoptero.aspx</DependentUpon>
     </Compile>
     <Compile Include="eveh\Piloto_inicio.aspx.cs">
       <DependentUpon>Piloto_inicio.aspx</DependentUpon>

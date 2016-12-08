@@ -11,8 +11,8 @@ namespace Web_eveh.eveh
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            string cuenta = (string)(Session["session_usuario"]);
-            lblpiloto.Text = "Bienvenido, " +cuenta;
+            
+            
         }
     }
 }
