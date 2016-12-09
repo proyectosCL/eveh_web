@@ -4,11 +4,11 @@
       <h1>Menu Piloto!</h1>
       <p>
           
-          <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/eveh/Horas_piloto_helicoptero.aspx">Ver Horas de Vuelo de Helicoptero</asp:HyperLink>
+          <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/eveh/mantenciones.aspx">Ver aeronaves en mantención</asp:HyperLink>
       </p>
       <p>
           
-          <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/eveh/Horas_piloto_avion.aspx">Ver Horas de Vuelo de Avion</asp:HyperLink>
+          <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/eveh/Horas_piloto_avion.aspx">Ver Horas de Vuelo de Aeronave</asp:HyperLink>
       </p>
     </div>
     

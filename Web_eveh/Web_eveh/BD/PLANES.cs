@@ -14,7 +14,14 @@ namespace Web_eveh.BD
     
     public partial class PLANES
     {
+        public PLANES()
+        {
+            this.DETALLES_MANTENIMIENTOS = new HashSet<DETALLES_MANTENIMIENTOS>();
+        }
+    
         public decimal ID { get; set; }
         public string DESCRIPCION { get; set; }
+    
+        public virtual ICollection<DETALLES_MANTENIMIENTOS> DETALLES_MANTENIMIENTOS { get; set; }
     }
 }

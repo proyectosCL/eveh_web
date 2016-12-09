@@ -37,6 +37,7 @@
         <AssociationConnector Association="Modelo.PILOTOS_PERSONAS_FK" ManuallyRouted="false" />
         <AssociationConnector Association="Modelo.TRIPULACION_PILOTOS_FK" ManuallyRouted="false" />
         <AssociationConnector Association="Modelo.TRIPULACION_VUELOS_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Modelo.DETALLES_M_PLANES_ID_FK" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

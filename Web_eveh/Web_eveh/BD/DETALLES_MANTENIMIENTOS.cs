@@ -22,5 +22,6 @@ namespace Web_eveh.BD
     
         public virtual COMPONENTES COMPONENTES { get; set; }
         public virtual MANTENIMIENTOS MANTENIMIENTOS { get; set; }
+        public virtual PLANES PLANES { get; set; }
     }
 }

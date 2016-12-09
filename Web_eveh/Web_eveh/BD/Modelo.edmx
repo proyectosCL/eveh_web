@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Modelo.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Modelo.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AERODROMOS">
           <Key>
             <PropertyRef Name="ID" />
@@ -236,6 +236,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="DETALLES_M_PLANES_ID_FK">
+          <End Role="PLANES" Type="Self.PLANES" Multiplicity="1" />
+          <End Role="DETALLES_MANTENIMIENTOS" Type="Self.DETALLES_MANTENIMIENTOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PLANES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DETALLES_MANTENIMIENTOS">
+              <PropertyRef Name="PLANES_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="LICENCIAS_PILOTOS_FK">
           <End Role="PILOTOS" Type="Self.PILOTOS" Multiplicity="1" />
           <End Role="LICENCIAS" Type="Self.LICENCIAS" Multiplicity="*" />
@@ -397,6 +409,10 @@
             <End Role="MANTENIMIENTOS" EntitySet="MANTENIMIENTOS" />
             <End Role="DETALLES_MANTENIMIENTOS" EntitySet="DETALLES_MANTENIMIENTOS" />
           </AssociationSet>
+          <AssociationSet Name="DETALLES_M_PLANES_ID_FK" Association="Self.DETALLES_M_PLANES_ID_FK">
+            <End Role="PLANES" EntitySet="PLANES" />
+            <End Role="DETALLES_MANTENIMIENTOS" EntitySet="DETALLES_MANTENIMIENTOS" />
+          </AssociationSet>
           <AssociationSet Name="LICENCIAS_PILOTOS_FK" Association="Self.LICENCIAS_PILOTOS_FK">
             <End Role="PILOTOS" EntitySet="PILOTOS" />
             <End Role="LICENCIAS" EntitySet="LICENCIAS" />
@@ -438,8 +454,7 @@
             <End Role="VUELOS" EntitySet="VUELOS" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Modelo" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -499,6 +514,7 @@
           <Property Name="TAREAS_SELECCIONADAS" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="COMPONENTES" Relationship="Self.DETALLES_M_COMPONENTES_FK" FromRole="DETALLES_MANTENIMIENTOS" ToRole="COMPONENTES" />
           <NavigationProperty Name="MANTENIMIENTOS" Relationship="Self.DETALLES_M_MANTENIMIENTOS_FK" FromRole="DETALLES_MANTENIMIENTOS" ToRole="MANTENIMIENTOS" />
+          <NavigationProperty Name="PLANES" Relationship="Modelo.DETALLES_M_PLANES_ID_FK" FromRole="DETALLES_MANTENIMIENTOS" ToRole="PLANES" />
         </EntityType>
         <EntityType Name="LICENCIAS">
           <Key>
@@ -568,6 +584,7 @@
           </Key>
           <Property Name="ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="DESCRIPCION" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="DETALLES_MANTENIMIENTOS" Relationship="Modelo.DETALLES_M_PLANES_ID_FK" FromRole="PLANES" ToRole="DETALLES_MANTENIMIENTOS" />
         </EntityType>
         <EntityType Name="TIPOS_AERONAVES">
           <Key>
@@ -907,7 +924,23 @@
             <End Role="VUELOS" EntitySet="VUELOS" />
             <End Role="TRIPULACION" EntitySet="TRIPULACION" />
           </AssociationSet>
+          <AssociationSet Name="DETALLES_M_PLANES_ID_FK" Association="Modelo.DETALLES_M_PLANES_ID_FK">
+            <End Role="PLANES" EntitySet="PLANES" />
+            <End Role="DETALLES_MANTENIMIENTOS" EntitySet="DETALLES_MANTENIMIENTOS" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="DETALLES_M_PLANES_ID_FK">
+          <End Type="Modelo.PLANES" Role="PLANES" Multiplicity="1" />
+          <End Type="Modelo.DETALLES_MANTENIMIENTOS" Role="DETALLES_MANTENIMIENTOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PLANES">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DETALLES_MANTENIMIENTOS">
+              <PropertyRef Name="PLANES_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
