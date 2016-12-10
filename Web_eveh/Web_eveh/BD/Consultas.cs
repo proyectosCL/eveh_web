@@ -52,11 +52,11 @@ namespace Web_eveh.BD
 
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 Cliente.Bdconexion.Close();
 
-                throw new System.ArgumentException("Ha ocurrido un Problema en la conexion con la Base de Datos");
+                throw new System.ArgumentException(ex.Message);
             }
 
 
