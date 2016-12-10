@@ -157,6 +157,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="eveh\aeronaves_en_mantenimiento.aspx" />
     <Content Include="eveh\Horas_piloto_avion.aspx" />
     <Content Include="eveh\Piloto_inicio.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -299,6 +300,13 @@
     </Compile>
     <Compile Include="cerrar_sesion.aspx.designer.cs">
       <DependentUpon>cerrar_sesion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="eveh\aeronaves_en_mantenimiento.aspx.cs">
+      <DependentUpon>aeronaves_en_mantenimiento.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="eveh\aeronaves_en_mantenimiento.aspx.designer.cs">
+      <DependentUpon>aeronaves_en_mantenimiento.aspx</DependentUpon>
     </Compile>
     <Compile Include="eveh\Horas_piloto_avion.aspx.cs">
       <DependentUpon>Horas_piloto_avion.aspx</DependentUpon>

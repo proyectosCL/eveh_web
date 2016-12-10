@@ -155,9 +155,9 @@ namespace Web_eveh.BD
                     LEER.Read();
                     
                     nombre = "Nombre: "+LEER["NOMBRE"] + " ";
-                    apellidos = LEER["APELLIDOS"] + " ";
-                    rut = "Rut: "+LEER["RUT"] + " ";
-                    horas_vuelo = "Horas de vuelo: "+LEER["HORAS_VUELO"] + "";
+                    apellidos = LEER["APELLIDOS"] + "   |   ";
+                    rut = "Rut: "+LEER["RUT"] + "    |    ";
+                    horas_vuelo = "Horas de vuelo: "+LEER["HORAS_VUELO"] + "   |   ";
                     Cliente.Bdconexion.Close();
                     return nombre + apellidos + rut + horas_vuelo;
                     

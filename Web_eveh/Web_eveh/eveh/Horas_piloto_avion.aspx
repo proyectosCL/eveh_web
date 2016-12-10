@@ -7,6 +7,8 @@
           <asp:Label ID="lblHoras" runat="server" Font-Bold="True" Font-Size="Large"></asp:Label>
           
       </p>
+        <p>
+            &nbsp;</p>
       <p>
           
           <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/eveh/Piloto_inicio.aspx">Volver</asp:HyperLink>
