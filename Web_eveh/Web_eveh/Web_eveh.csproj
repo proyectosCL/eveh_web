@@ -157,6 +157,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="eveh\Mantenimientos_realizados.aspx" />
     <Content Include="eveh\aeronaves_en_mantenimiento.aspx" />
     <Content Include="eveh\Horas_piloto_avion.aspx" />
     <Content Include="eveh\Piloto_inicio.aspx" />
@@ -300,6 +301,13 @@
     </Compile>
     <Compile Include="cerrar_sesion.aspx.designer.cs">
       <DependentUpon>cerrar_sesion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="eveh\Mantenimientos_realizados.aspx.cs">
+      <DependentUpon>Mantenimientos_realizados.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="eveh\Mantenimientos_realizados.aspx.designer.cs">
+      <DependentUpon>Mantenimientos_realizados.aspx</DependentUpon>
     </Compile>
     <Compile Include="eveh\aeronaves_en_mantenimiento.aspx.cs">
       <DependentUpon>aeronaves_en_mantenimiento.aspx</DependentUpon>

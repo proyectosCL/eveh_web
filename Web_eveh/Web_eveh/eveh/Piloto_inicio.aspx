@@ -10,6 +10,10 @@
           
           <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/eveh/Horas_piloto_avion.aspx">Ver Mis Horas de Vuelo</asp:HyperLink>
       </p>
+        <p>
+          
+          <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/eveh/Mantenimientos_realizados.aspx">Ver Mantenimientos realizados</asp:HyperLink>
+      </p>
     </div>
     
 
