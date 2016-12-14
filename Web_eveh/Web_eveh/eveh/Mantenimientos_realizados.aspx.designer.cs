@@ -10,7 +10,7 @@
 namespace Web_eveh.eveh {
     
     
-    public partial class aeronaves_en_mantenimiento {
+    public partial class Mantenimientos_realizados {
         
         /// <summary>
         /// Control HyperLink2.
